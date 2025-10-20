@@ -112,7 +112,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     try {
       setState(prev => ({ ...prev, isLoading: true }));
       
-      const response = await AuthService.register(data);
+      await AuthService.register(data);
       
       setState(prev => ({ ...prev, isLoading: false }));
       

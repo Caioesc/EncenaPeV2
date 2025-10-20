@@ -4,7 +4,7 @@
 
 -- Insert admin user (password: admin123)
 INSERT INTO usuarios (nome, email, senha, roles, ativo) VALUES 
-('Administrador', 'admin@encenape.com', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iKTVEFDi', 'ROLE_ADMIN', TRUE);
+('Administrador', 'admin@encenape.com', '$2a$10$EixZaYVK1fsbw1ZfbX3OXePaWxn96p36WQoeG6Lruj3vjPGga31lW', 'ROLE_ADMIN', TRUE);
 
 -- Insert test users (password: user123)
 INSERT INTO usuarios (nome, email, senha, telefone, roles, ativo) VALUES 

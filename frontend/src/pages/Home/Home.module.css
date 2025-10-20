@@ -1,12 +1,11 @@
 .home {
   min-height: 100vh;
-  background-color: var(--white);
+  background: linear-gradient(135deg, var(--gray-50) 0%, var(--white) 100%);
 }
 
 .hero {
-  background: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-blue) 100%);
-  color: var(--white);
-  padding: var(--spacing-16) 0;
+  background: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-blue) 50%, var(--primary-orange) 100%);
+  padding: var(--spacing-20) 0;
   position: relative;
   overflow: hidden;
 }
@@ -18,14 +17,14 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.05)"/><circle cx="10" cy="60" r="0.5" fill="rgba(255,255,255,0.05)"/><circle cx="90" cy="40" r="0.5" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
   opacity: 0.3;
 }
 
 .heroContent {
-  max-width: 1200px;
+  max-width: var(--breakpoint-xl);
   margin: 0 auto;
-  padding: 0 var(--spacing-4);
+  padding: 0 var(--spacing-6);
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--spacing-12);
@@ -35,26 +34,28 @@
 }
 
 .heroText {
-  animation: slideInLeft 0.8s ease-out;
+  color: var(--white);
 }
 
 .heroTitle {
   font-size: var(--font-size-5xl);
-  font-weight: var(--font-weight-extrabold);
-  line-height: var(--line-height-tight);
+  font-weight: var(--font-weight-bold);
   margin-bottom: var(--spacing-6);
+  line-height: var(--line-height-tight);
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .heroHighlight {
   color: var(--primary-yellow);
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
 .heroSubtitle {
   font-size: var(--font-size-xl);
-  line-height: var(--line-height-relaxed);
   margin-bottom: var(--spacing-8);
   opacity: 0.9;
+  line-height: var(--line-height-relaxed);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .heroActions {
@@ -64,99 +65,110 @@
 }
 
 .primaryButton {
-  background-color: var(--white);
-  color: var(--primary-purple);
+  background: linear-gradient(135deg, var(--primary-orange), var(--primary-yellow));
+  color: var(--white);
   padding: var(--spacing-4) var(--spacing-8);
-  border-radius: var(--border-radius-xl);
-  text-decoration: none;
-  font-weight: var(--font-weight-bold);
+  border-radius: var(--border-radius-lg);
+  font-weight: var(--font-weight-semibold);
   font-size: var(--font-size-lg);
-  transition: all var(--transition-base);
+  text-decoration: none;
+  transition: all var(--transition-fast);
   box-shadow: var(--shadow-lg);
-  display: inline-flex;
-  align-items: center;
-  gap: var(--spacing-2);
+  border: 2px solid transparent;
 }
 
 .primaryButton:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
   box-shadow: var(--shadow-xl);
-  color: var(--primary-purple-dark);
+  background: linear-gradient(135deg, var(--primary-orange-dark), var(--primary-yellow-dark));
   text-decoration: none;
+  color: var(--white);
 }
 
 .secondaryButton {
-  background-color: transparent;
+  background: rgba(255, 255, 255, 0.1);
   color: var(--white);
   padding: var(--spacing-4) var(--spacing-8);
-  border: 2px solid var(--white);
-  border-radius: var(--border-radius-xl);
-  text-decoration: none;
+  border-radius: var(--border-radius-lg);
   font-weight: var(--font-weight-semibold);
   font-size: var(--font-size-lg);
-  transition: all var(--transition-base);
-  display: inline-flex;
-  align-items: center;
-  gap: var(--spacing-2);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
 }
 
 .secondaryButton:hover {
-  background-color: var(--white);
-  color: var(--primary-purple);
+  background: rgba(255, 255, 255, 0.2);
+  border-color: var(--primary-yellow);
+  transform: translateY(-3px);
   text-decoration: none;
-  transform: translateY(-2px);
+  color: var(--white);
 }
 
 .heroImage {
   display: flex;
   justify-content: center;
   align-items: center;
-  animation: slideInRight 0.8s ease-out;
 }
 
 .heroPlaceholder {
   width: 300px;
   height: 300px;
   background: rgba(255, 255, 255, 0.1);
-  border-radius: var(--border-radius-2xl);
+  border-radius: var(--border-radius-xl);
   display: flex;
   align-items: center;
   justify-content: center;
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: var(--shadow-xl);
 }
 
 .heroIcon {
-  font-size: var(--font-size-5xl);
-  opacity: 0.8;
+  font-size: 8rem;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
 }
 
 .section {
   padding: var(--spacing-16) 0;
-  background-color: var(--white);
 }
 
 .container {
-  max-width: 1200px;
+  max-width: var(--breakpoint-xl);
   margin: 0 auto;
-  padding: 0 var(--spacing-4);
+  padding: 0 var(--spacing-6);
 }
 
 .features {
-  background-color: var(--gray-50);
+  background: linear-gradient(135deg, var(--white) 0%, var(--gray-50) 100%);
   padding: var(--spacing-20) 0;
+  position: relative;
+}
+
+.features::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(117,41,90,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+  opacity: 0.5;
 }
 
 .featuresHeader {
   text-align: center;
   margin-bottom: var(--spacing-16);
+  position: relative;
+  z-index: 1;
 }
 
 .featuresTitle {
   font-size: var(--font-size-4xl);
-  font-weight: var(--font-weight-bold);
-  color: var(--gray-900);
+  color: var(--primary-purple);
   margin-bottom: var(--spacing-4);
+  font-weight: var(--font-weight-bold);
 }
 
 .featuresSubtitle {
@@ -168,73 +180,94 @@
 
 .featuresGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: var(--spacing-8);
+  position: relative;
+  z-index: 1;
 }
 
 .featureCard {
-  background-color: var(--white);
+  background: var(--white);
   padding: var(--spacing-8);
   border-radius: var(--border-radius-xl);
   text-align: center;
-  box-shadow: var(--shadow-sm);
-  transition: all var(--transition-base);
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-fast);
   border: 1px solid var(--gray-200);
+  position: relative;
+  overflow: hidden;
+}
+
+.featureCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-purple), var(--primary-blue), var(--primary-orange));
 }
 
 .featureCard:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
 }
 
 .featureIcon {
-  width: 80px;
-  height: 80px;
-  background: linear-gradient(135deg, var(--primary-purple), var(--primary-blue));
-  border-radius: var(--border-radius-full);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto var(--spacing-6);
-  font-size: var(--font-size-3xl);
+  font-size: var(--font-size-5xl);
+  margin-bottom: var(--spacing-4);
+  display: block;
 }
 
 .featureTitle {
   font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-bold);
   color: var(--gray-900);
   margin-bottom: var(--spacing-3);
+  font-weight: var(--font-weight-semibold);
 }
 
 .featureDescription {
   color: var(--gray-600);
   line-height: var(--line-height-relaxed);
-  margin: 0;
 }
 
 .cta {
   background: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-blue) 100%);
-  color: var(--white);
   padding: var(--spacing-20) 0;
-  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="stars" width="50" height="50" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.2)"/><circle cx="10" cy="10" r="0.5" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="40" r="0.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23stars)"/></svg>');
+  opacity: 0.3;
 }
 
 .ctaContent {
-  max-width: 800px;
-  margin: 0 auto;
+  text-align: center;
+  color: var(--white);
+  position: relative;
+  z-index: 1;
 }
 
 .ctaTitle {
   font-size: var(--font-size-4xl);
   font-weight: var(--font-weight-bold);
   margin-bottom: var(--spacing-4);
-  line-height: var(--line-height-tight);
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .ctaSubtitle {
   font-size: var(--font-size-xl);
   margin-bottom: var(--spacing-8);
   opacity: 0.9;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .ctaActions {
@@ -245,141 +278,126 @@
 }
 
 .ctaButton {
-  background-color: var(--white);
-  color: var(--primary-purple);
+  background: linear-gradient(135deg, var(--primary-orange), var(--primary-yellow));
+  color: var(--white);
   padding: var(--spacing-4) var(--spacing-8);
-  border-radius: var(--border-radius-xl);
-  text-decoration: none;
-  font-weight: var(--font-weight-bold);
+  border-radius: var(--border-radius-lg);
+  font-weight: var(--font-weight-semibold);
   font-size: var(--font-size-lg);
-  transition: all var(--transition-base);
+  text-decoration: none;
+  transition: all var(--transition-fast);
   box-shadow: var(--shadow-lg);
-  display: inline-flex;
-  align-items: center;
-  gap: var(--spacing-2);
+  border: 2px solid transparent;
 }
 
 .ctaButton:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
   box-shadow: var(--shadow-xl);
-  color: var(--primary-purple-dark);
+  background: linear-gradient(135deg, var(--primary-orange-dark), var(--primary-yellow-dark));
   text-decoration: none;
+  color: var(--white);
 }
 
 .ctaButtonSecondary {
-  background-color: transparent;
+  background: rgba(255, 255, 255, 0.1);
   color: var(--white);
   padding: var(--spacing-4) var(--spacing-8);
-  border: 2px solid var(--white);
-  border-radius: var(--border-radius-xl);
-  text-decoration: none;
+  border-radius: var(--border-radius-lg);
   font-weight: var(--font-weight-semibold);
   font-size: var(--font-size-lg);
-  transition: all var(--transition-base);
-  display: inline-flex;
-  align-items: center;
-  gap: var(--spacing-2);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
 }
 
 .ctaButtonSecondary:hover {
-  background-color: var(--white);
-  color: var(--primary-purple);
+  background: rgba(255, 255, 255, 0.2);
+  border-color: var(--primary-yellow);
+  transform: translateY(-3px);
   text-decoration: none;
-  transform: translateY(-2px);
+  color: var(--white);
 }
 
-/* Animations */
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-/* Responsive */
+/* Responsividade */
 @media (max-width: 768px) {
   .hero {
     padding: var(--spacing-12) 0;
   }
-  
+
   .heroContent {
     grid-template-columns: 1fr;
     gap: var(--spacing-8);
     text-align: center;
   }
-  
+
   .heroTitle {
-    font-size: var(--font-size-4xl);
+    font-size: var(--font-size-3xl);
   }
-  
+
   .heroSubtitle {
     font-size: var(--font-size-lg);
   }
-  
-  .heroActions {
-    justify-content: center;
-  }
-  
+
   .heroPlaceholder {
     width: 200px;
     height: 200px;
   }
-  
+
   .heroIcon {
-    font-size: var(--font-size-4xl);
+    font-size: 5rem;
   }
-  
+
   .section {
     padding: var(--spacing-12) 0;
   }
-  
+
+  .container {
+    padding: 0 var(--spacing-4);
+  }
+
   .features {
     padding: var(--spacing-16) 0;
   }
-  
+
   .featuresTitle {
     font-size: var(--font-size-3xl);
   }
-  
+
   .featuresSubtitle {
     font-size: var(--font-size-lg);
   }
-  
+
   .featuresGrid {
     grid-template-columns: 1fr;
     gap: var(--spacing-6);
   }
-  
+
+  .featureCard {
+    padding: var(--spacing-6);
+  }
+
   .cta {
     padding: var(--spacing-16) 0;
   }
-  
+
   .ctaTitle {
     font-size: var(--font-size-3xl);
   }
-  
+
   .ctaSubtitle {
     font-size: var(--font-size-lg);
   }
-  
+
   .ctaActions {
     flex-direction: column;
     align-items: center;
+  }
+
+  .ctaButton,
+  .ctaButtonSecondary {
+    width: 100%;
+    max-width: 300px;
   }
 }
 
@@ -387,75 +405,39 @@
   .hero {
     padding: var(--spacing-8) 0;
   }
-  
+
   .heroTitle {
-    font-size: var(--font-size-3xl);
+    font-size: var(--font-size-2xl);
   }
-  
+
   .heroSubtitle {
     font-size: var(--font-size-base);
   }
-  
+
+  .heroActions {
+    flex-direction: column;
+    align-items: center;
+  }
+
   .primaryButton,
   .secondaryButton {
-    padding: var(--spacing-3) var(--spacing-6);
-    font-size: var(--font-size-base);
+    width: 100%;
+    max-width: 250px;
   }
-  
-  .heroPlaceholder {
-    width: 150px;
-    height: 150px;
-  }
-  
-  .heroIcon {
-    font-size: var(--font-size-3xl);
-  }
-  
-  .section {
-    padding: var(--spacing-8) 0;
-  }
-  
-  .features {
-    padding: var(--spacing-12) 0;
-  }
-  
+
   .featuresTitle {
     font-size: var(--font-size-2xl);
   }
-  
+
   .featuresSubtitle {
     font-size: var(--font-size-base);
   }
-  
-  .featureCard {
-    padding: var(--spacing-6);
-  }
-  
-  .featureIcon {
-    width: 60px;
-    height: 60px;
-    font-size: var(--font-size-2xl);
-  }
-  
-  .featureTitle {
-    font-size: var(--font-size-lg);
-  }
-  
-  .cta {
-    padding: var(--spacing-12) 0;
-  }
-  
+
   .ctaTitle {
     font-size: var(--font-size-2xl);
   }
-  
+
   .ctaSubtitle {
-    font-size: var(--font-size-base);
-  }
-  
-  .ctaButton,
-  .ctaButtonSecondary {
-    padding: var(--spacing-3) var(--spacing-6);
     font-size: var(--font-size-base);
   }
 }

@@ -1,5 +1,4 @@
 import { useState, useEffect, useCallback } from 'react';
-import { AxiosRequestConfig } from 'axios';
 
 // Tipos genéricos para o hook
 export interface UseApiState<T> {
@@ -90,7 +89,7 @@ export function usePaginatedApi<T = any>(
     last: true,
   });
 
-  const { data, loading, error, execute } = useApi(
+  const { loading, error, execute } = useApi(
     (pageNum: number, pageSize: number, ...args: any[]) => 
       apiFunction(pageNum, pageSize, ...args),
     options

@@ -1,457 +1,195 @@
-.profile {
-  min-height: 100vh;
-  background-color: var(--gray-50);
-  padding: var(--spacing-8) 0;
-}
-
-.container {
+.profileContainer {
   max-width: 800px;
   margin: 0 auto;
-  padding: 0 var(--spacing-4);
+  padding: var(--spacing-6);
 }
 
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  text-align: center;
   margin-bottom: var(--spacing-8);
-  background-color: var(--white);
-  border-radius: var(--border-radius-xl);
-  padding: var(--spacing-6);
-  box-shadow: var(--shadow-sm);
-  border: 1px solid var(--gray-200);
+}
+
+.header h1 {
+  font-size: var(--font-size-4xl);
+  color: var(--primary-purple);
+  margin-bottom: var(--spacing-4);
 }
 
 .userInfo {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-4);
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-6);
+  margin-bottom: var(--spacing-8);
+  box-shadow: var(--shadow-sm);
 }
 
-.avatar {
+.userAvatar {
   width: 80px;
   height: 80px;
-  background: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-blue) 100%);
-  border-radius: var(--border-radius-full);
+  border-radius: 50%;
+  background: var(--primary-purple);
   display: flex;
   align-items: center;
   justify-content: center;
+  color: var(--white);
   font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-bold);
-  color: var(--white);
-}
-
-.userDetails {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-1);
+  margin: 0 auto var(--spacing-4);
 }
 
 .userName {
   font-size: var(--font-size-2xl);
-  font-weight: var(--font-weight-bold);
-  color: var(--gray-900);
-  margin: 0;
+  font-weight: var(--font-weight-semibold);
+  color: var(--primary-purple);
+  text-align: center;
+  margin-bottom: var(--spacing-2);
 }
 
 .userEmail {
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-lg);
   color: var(--gray-600);
-  margin: 0;
+  text-align: center;
+  margin-bottom: var(--spacing-6);
 }
 
-.logoutButton {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-2);
-  background-color: var(--gray-100);
-  color: var(--gray-700);
-  border: 1px solid var(--gray-300);
-  border-radius: var(--border-radius-lg);
-  padding: var(--spacing-3) var(--spacing-4);
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
-  cursor: pointer;
-  transition: all var(--transition-fast);
-}
-
-.logoutButton:hover {
-  background-color: var(--error);
-  color: var(--white);
-  border-color: var(--error);
-}
-
-.tabs {
-  display: flex;
-  background-color: var(--white);
-  border-radius: var(--border-radius-xl);
-  padding: var(--spacing-2);
-  margin-bottom: var(--spacing-8);
-  box-shadow: var(--shadow-sm);
-  border: 1px solid var(--gray-200);
-  overflow-x: auto;
-}
-
-.tab {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-2);
-  background: none;
-  border: none;
-  padding: var(--spacing-3) var(--spacing-4);
-  border-radius: var(--border-radius-lg);
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
-  color: var(--gray-600);
-  cursor: pointer;
-  transition: all var(--transition-fast);
-  white-space: nowrap;
-  flex: 1;
-  justify-content: center;
-}
-
-.tab:hover {
-  background-color: var(--gray-100);
-  color: var(--gray-800);
-}
-
-.tabActive {
-  background-color: var(--primary-purple);
-  color: var(--white);
-}
-
-.tabActive:hover {
-  background-color: var(--primary-purple-dark);
-  color: var(--white);
-}
-
-.content {
-  background-color: var(--white);
-  border-radius: var(--border-radius-xl);
-  padding: var(--spacing-8);
-  box-shadow: var(--shadow-sm);
-  border: 1px solid var(--gray-200);
-}
-
-.section {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-6);
-}
-
-.sectionHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.sectionTitle {
-  font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-bold);
-  color: var(--gray-900);
-  margin: 0;
-}
-
-.editButton {
-  background-color: var(--primary-purple);
-  color: var(--white);
-  border: none;
-  border-radius: var(--border-radius-lg);
-  padding: var(--spacing-2) var(--spacing-4);
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
-  cursor: pointer;
-  transition: all var(--transition-fast);
-}
-
-.editButton:hover {
-  background-color: var(--primary-purple-dark);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-md);
-}
-
-.editForm {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-4);
-}
-
-.formGroup {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-2);
-}
-
-.label {
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-semibold);
-  color: var(--gray-800);
-}
-
-.input {
-  padding: var(--spacing-3) var(--spacing-4);
-  border: 1px solid var(--gray-300);
-  border-radius: var(--border-radius-lg);
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
-  color: var(--gray-800);
-  background-color: var(--white);
-  transition: all var(--transition-fast);
-}
-
-.input:focus {
-  outline: none;
-  border-color: var(--primary-purple);
-  box-shadow: 0 0 0 3px rgba(117, 41, 90, 0.1);
-}
-
-.formActions {
-  display: flex;
-  gap: var(--spacing-3);
-  justify-content: flex-end;
-}
-
-.cancelButton {
-  background-color: var(--gray-100);
-  color: var(--gray-700);
-  border: 1px solid var(--gray-300);
-  border-radius: var(--border-radius-lg);
-  padding: var(--spacing-3) var(--spacing-4);
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
-  cursor: pointer;
-  transition: all var(--transition-fast);
-}
-
-.cancelButton:hover {
-  background-color: var(--gray-200);
-  border-color: var(--gray-400);
-}
-
-.saveButton {
-  background-color: var(--primary-purple);
-  color: var(--white);
-  border: none;
-  border-radius: var(--border-radius-lg);
-  padding: var(--spacing-3) var(--spacing-4);
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
-  cursor: pointer;
-  transition: all var(--transition-fast);
-}
-
-.saveButton:hover:not(:disabled) {
-  background-color: var(--primary-purple-dark);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-md);
-}
-
-.saveButton:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  transform: none;
-}
-
-.profileInfo {
-  display: flex;
-  flex-direction: column;
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: var(--spacing-4);
 }
 
 .infoItem {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
+  text-align: center;
   padding: var(--spacing-4);
-  background-color: var(--gray-50);
-  border-radius: var(--border-radius-lg);
+  background: var(--gray-50);
+  border-radius: var(--border-radius-md);
 }
 
 .infoLabel {
   font-size: var(--font-size-sm);
   color: var(--gray-600);
-  font-weight: var(--font-weight-medium);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  margin-bottom: var(--spacing-1);
 }
 
 .infoValue {
-  font-size: var(--font-size-base);
-  color: var(--gray-900);
+  font-size: var(--font-size-lg);
   font-weight: var(--font-weight-semibold);
+  color: var(--primary-purple);
 }
 
-.purchasesList {
-  min-height: 200px;
+.formSection {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-6);
+  margin-bottom: var(--spacing-8);
+  box-shadow: var(--shadow-sm);
 }
 
-.emptyPurchases {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: var(--spacing-16);
-  text-align: center;
+.formSection h2 {
+  font-size: var(--font-size-2xl);
+  color: var(--primary-purple);
+  margin-bottom: var(--spacing-6);
 }
 
-.emptyIcon {
-  font-size: var(--font-size-5xl);
-  margin-bottom: var(--spacing-4);
-  opacity: 0.6;
+.formGroup {
+  margin-bottom: var(--spacing-6);
 }
 
-.emptyPurchases h3 {
-  font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-bold);
-  color: var(--gray-900);
+.formLabel {
+  display: block;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--gray-700);
   margin-bottom: var(--spacing-2);
 }
 
-.emptyPurchases p {
+.formInput {
+  width: 100%;
+  padding: var(--spacing-3);
+  border: 1px solid var(--gray-300);
+  border-radius: var(--border-radius-md);
   font-size: var(--font-size-base);
-  color: var(--gray-600);
-  margin: 0;
+  transition: all var(--transition-fast);
 }
 
-.passwordForm {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-4);
-  max-width: 400px;
-}
-
-.errorAlert {
-  padding: var(--spacing-3) var(--spacing-4);
-  background-color: #FEF2F2;
-  border: 1px solid #FECACA;
-  border-radius: var(--border-radius-lg);
-  color: var(--error);
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
-}
-
-.successAlert {
-  padding: var(--spacing-3) var(--spacing-4);
-  background-color: #F0FDF4;
-  border: 1px solid #BBF7D0;
-  border-radius: var(--border-radius-lg);
-  color: var(--success);
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
+.formInput:focus {
+  outline: none;
+  border-color: var(--primary-purple);
+  box-shadow: 0 0 0 3px rgba(117, 41, 90, 0.1);
 }
 
 .submitButton {
-  background-color: var(--primary-purple);
+  background: var(--primary-purple);
   color: var(--white);
   border: none;
-  border-radius: var(--border-radius-lg);
-  padding: var(--spacing-3) var(--spacing-4);
+  padding: var(--spacing-3) var(--spacing-6);
+  border-radius: var(--border-radius-md);
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-semibold);
   cursor: pointer;
   transition: all var(--transition-fast);
-  align-self: flex-start;
 }
 
-.submitButton:hover:not(:disabled) {
-  background-color: var(--primary-purple-dark);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-md);
+.submitButton:hover {
+  background: var(--primary-purple-dark);
 }
 
 .submitButton:disabled {
-  opacity: 0.6;
+  background: var(--gray-400);
   cursor: not-allowed;
-  transform: none;
+}
+
+.errorAlert {
+  background: var(--error-light);
+  color: var(--white);
+  padding: var(--spacing-3);
+  border-radius: var(--border-radius-md);
+  margin-bottom: var(--spacing-4);
+  font-size: var(--font-size-sm);
+}
+
+.successAlert {
+  background: var(--success);
+  color: var(--white);
+  padding: var(--spacing-3);
+  border-radius: var(--border-radius-md);
+  margin-bottom: var(--spacing-4);
+  font-size: var(--font-size-sm);
 }
 
 .loading {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  padding: var(--spacing-16);
-  color: var(--gray-600);
+  align-items: center;
+  min-height: 200px;
 }
 
-.loading p {
-  margin-top: var(--spacing-4);
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-medium);
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--gray-200);
+  border-top: 4px solid var(--primary-purple);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
 }
 
-/* Responsive */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsividade */
 @media (max-width: 768px) {
-  .profile {
-    padding: var(--spacing-6) 0;
-  }
-  
-  .container {
-    padding: 0 var(--spacing-3);
-  }
-  
-  .header {
-    flex-direction: column;
-    gap: var(--spacing-4);
-    align-items: flex-start;
-  }
-  
-  .userInfo {
-    width: 100%;
-  }
-  
-  .logoutButton {
-    align-self: flex-end;
-  }
-  
-  .tabs {
-    flex-direction: column;
-    gap: var(--spacing-1);
-  }
-  
-  .tab {
-    justify-content: flex-start;
-  }
-  
-  .content {
-    padding: var(--spacing-6);
-  }
-  
-  .formActions {
-    flex-direction: column;
-  }
-  
-  .passwordForm {
-    max-width: 100%;
-  }
-}
-
-@media (max-width: 576px) {
-  .header {
+  .profileContainer {
     padding: var(--spacing-4);
   }
   
-  .avatar {
-    width: 60px;
-    height: 60px;
-    font-size: var(--font-size-xl);
-  }
-  
-  .userName {
-    font-size: var(--font-size-xl);
-  }
-  
-  .content {
-    padding: var(--spacing-4);
-  }
-  
-  .sectionTitle {
-    font-size: var(--font-size-lg);
-  }
-  
-  .infoItem {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--spacing-1);
+  .infoGrid {
+    grid-template-columns: 1fr;
   }
 }

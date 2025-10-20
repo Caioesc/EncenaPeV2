@@ -136,7 +136,7 @@ const Purchases: React.FC = () => {
           </div>
         ) : (
           <div className={styles.purchasesList}>
-            {purchasesList.map((purchase) => (
+            {purchasesList.map((purchase: any) => (
               <div
                 key={purchase.id}
                 className={styles.purchaseCard}

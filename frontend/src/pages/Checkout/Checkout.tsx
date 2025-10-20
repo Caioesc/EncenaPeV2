@@ -26,7 +26,7 @@ const Checkout: React.FC = () => {
   // Mutation para comprar ingresso
   const purchaseMutation = useMutation(
     (data: { eventId: number; quantity: number }) =>
-      TicketService.purchaseTicket({ usuarioId: user.id, eventoId: data.eventId, quantidade: data.quantity }),
+      TicketService.purchaseTicket({ eventoId: data.eventId, quantidade: data.quantity }),
     {
       onSuccess: (data) => {
         navigate(`/compras/${data.id}`, { 

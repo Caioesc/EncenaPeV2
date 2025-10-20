@@ -1,4 +1,4 @@
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
+import axios, { AxiosInstance, AxiosResponse } from 'axios';
 import { toast } from 'react-toastify';
 
 // Tipos para as respostas da API
@@ -21,7 +21,7 @@ export interface PaginatedResponse<T> {
 // Configuração da instância do axios
 const createApiInstance = (): AxiosInstance => {
   const instance = axios.create({
-    baseURL: import.meta.env.VITE_API_URL + '/api',
+    baseURL: 'http://localhost:8080/api',
     timeout: 10000,
     headers: {
       'Content-Type': 'application/json',
@@ -93,18 +93,19 @@ export class AuthService {
     return response.data;
   }
 
-  static async resetPassword(data: {
-    email: string;
-    token: string;
-    newPassword: string;
-  }) {
-    const response = await api.post('/auth/reset-password', data);
+  static async resetPassword(token: string, newPassword: string) {
+    const response = await api.post('/auth/reset-password', { token, newPassword });
     return response.data;
   }
 }
 
 export class UserService {
   static async getCurrentUser() {
+    const response = await api.get('/users/me');
+    return response.data;
+  }
+
+  static async getProfile() {
     const response = await api.get('/users/me');
     return response.data;
   }
@@ -167,11 +168,60 @@ export class EventService {
     const response = await api.get('/eventos/cidades');
     return response.data;
   }
+
+  // Métodos de administração
+  static async createEvent(data: {
+    titulo: string;
+    descricao?: string;
+    categoria?: string;
+    cidade?: string;
+    local?: string;
+    endereco?: string;
+    dataHora: string;
+    duracaoMin?: number;
+    preco: number;
+    totalTickets?: number;
+    imagemUrl?: string;
+    espacoId?: number;
+  }) {
+    const response = await api.post('/eventos/admin', data);
+    return response.data;
+  }
+
+  static async updateEvent(id: number, data: {
+    titulo?: string;
+    descricao?: string;
+    categoria?: string;
+    cidade?: string;
+    local?: string;
+    endereco?: string;
+    dataHora?: string;
+    duracaoMin?: number;
+    preco?: number;
+    totalTickets?: number;
+    imagemUrl?: string;
+    espacoId?: number;
+    ativo?: boolean;
+  }) {
+    const response = await api.put(`/eventos/admin/${id}`, data);
+    return response.data;
+  }
+
+  static async deleteEvent(id: number) {
+    const response = await api.delete(`/eventos/admin/${id}`);
+    return response.data;
+  }
+
+  static async getAllEventsAdmin(page: number = 0, size: number = 10) {
+    const response = await api.get('/eventos/admin', {
+      params: { page, size }
+    });
+    return response.data;
+  }
 }
 
 export class TicketService {
   static async purchaseTicket(data: {
-    usuarioId: number;
     eventoId: number;
     quantidade: number;
     paymentMethod?: string;
@@ -228,10 +278,12 @@ export class FAQService {
     return response.data;
   }
 
-  static async searchFAQs(query: string) {
-    const response = await api.get('/faq/search', {
-      params: { query }
-    });
+  static async searchFAQs(query: string, category?: string) {
+    const params: any = { query };
+    if (category) {
+      params.category = category;
+    }
+    const response = await api.get('/faq/search', { params });
     return response.data;
   }
 

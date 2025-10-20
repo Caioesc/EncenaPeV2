@@ -133,4 +133,12 @@ public class UsuarioService implements UserDetailsService {
         response.setUpdatedAt(usuario.getUpdatedAt());
         return response;
     }
+    
+    public List<Usuario> getAllUsers() {
+        return usuarioRepository.findAll();
+    }
+    
+    public boolean existsByEmail(String email) {
+        return usuarioRepository.existsByEmail(email);
+    }
 }

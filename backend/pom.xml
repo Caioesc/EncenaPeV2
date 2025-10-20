@@ -74,7 +74,6 @@
         </dependency>
         
         <!-- Flyway - Commented for development -->
-        <!--
         <dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-core</artifactId>
@@ -83,7 +82,6 @@
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-mysql</artifactId>
         </dependency>
-        -->
         
         <!-- QR Code -->
         <dependency>
@@ -149,13 +147,11 @@
                 </configuration>
             </plugin>
             <!-- Flyway plugin - Commented for development -->
-            <!--
             <plugin>
                 <groupId>org.flywaydb</groupId>
                 <artifactId>flyway-maven-plugin</artifactId>
                 <version>9.22.3</version>
             </plugin>
-            -->
         </plugins>
     </build>
 </project>

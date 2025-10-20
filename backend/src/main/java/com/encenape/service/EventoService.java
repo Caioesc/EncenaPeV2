@@ -1,8 +1,12 @@
 package com.encenape.service;
 
 import com.encenape.dto.EventoResponse;
+import com.encenape.dto.CreateEventoRequest;
+import com.encenape.dto.UpdateEventoRequest;
 import com.encenape.model.Evento;
+import com.encenape.model.Espaco;
 import com.encenape.repository.EventoRepository;
+import com.encenape.repository.EspacoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,6 +22,7 @@ import java.util.stream.Collectors;
 public class EventoService {
     
     private final EventoRepository eventoRepository;
+    private final EspacoRepository espacoRepository;
     
     public List<EventoResponse> getProximosEventos() {
         return eventoRepository.findProximosEventos(LocalDateTime.now())
@@ -91,5 +96,96 @@ public class EventoService {
         }
         
         return response;
+    }
+    
+    // Métodos de administração
+    @Transactional
+    public EventoResponse criarEvento(CreateEventoRequest request) {
+        Evento evento = new Evento();
+        evento.setTitulo(request.getTitulo());
+        evento.setDescricao(request.getDescricao());
+        evento.setCategoria(request.getCategoria());
+        evento.setCidade(request.getCidade());
+        evento.setLocal(request.getLocal());
+        evento.setEndereco(request.getEndereco());
+        evento.setDataHora(request.getDataHora());
+        evento.setDuracaoMin(request.getDuracaoMin());
+        evento.setPreco(request.getPreco());
+        evento.setTotalTickets(request.getTotalTickets());
+        evento.setTicketsAvailable(request.getTotalTickets());
+        evento.setImagemUrl(request.getImagemUrl());
+        evento.setAtivo(true);
+        
+        if (request.getEspacoId() != null) {
+            Espaco espaco = espacoRepository.findById(request.getEspacoId())
+                    .orElseThrow(() -> new RuntimeException("Espaço não encontrado"));
+            evento.setEspaco(espaco);
+        }
+        
+        Evento savedEvento = eventoRepository.save(evento);
+        return mapToEventoResponse(savedEvento);
+    }
+    
+    @Transactional
+    public EventoResponse atualizarEvento(Long id, UpdateEventoRequest request) {
+        Evento evento = eventoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Evento não encontrado"));
+        
+        if (request.getTitulo() != null) {
+            evento.setTitulo(request.getTitulo());
+        }
+        if (request.getDescricao() != null) {
+            evento.setDescricao(request.getDescricao());
+        }
+        if (request.getCategoria() != null) {
+            evento.setCategoria(request.getCategoria());
+        }
+        if (request.getCidade() != null) {
+            evento.setCidade(request.getCidade());
+        }
+        if (request.getLocal() != null) {
+            evento.setLocal(request.getLocal());
+        }
+        if (request.getEndereco() != null) {
+            evento.setEndereco(request.getEndereco());
+        }
+        if (request.getDataHora() != null) {
+            evento.setDataHora(request.getDataHora());
+        }
+        if (request.getDuracaoMin() != null) {
+            evento.setDuracaoMin(request.getDuracaoMin());
+        }
+        if (request.getPreco() != null) {
+            evento.setPreco(request.getPreco());
+        }
+        if (request.getTotalTickets() != null) {
+            evento.setTotalTickets(request.getTotalTickets());
+        }
+        if (request.getImagemUrl() != null) {
+            evento.setImagemUrl(request.getImagemUrl());
+        }
+        if (request.getAtivo() != null) {
+            evento.setAtivo(request.getAtivo());
+        }
+        if (request.getEspacoId() != null) {
+            Espaco espaco = espacoRepository.findById(request.getEspacoId())
+                    .orElseThrow(() -> new RuntimeException("Espaço não encontrado"));
+            evento.setEspaco(espaco);
+        }
+        
+        Evento savedEvento = eventoRepository.save(evento);
+        return mapToEventoResponse(savedEvento);
+    }
+    
+    @Transactional
+    public void excluirEvento(Long id) {
+        Evento evento = eventoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Evento não encontrado"));
+        eventoRepository.delete(evento);
+    }
+    
+    public Page<EventoResponse> getAllEventosAdmin(Pageable pageable) {
+        return eventoRepository.findAll(pageable)
+                .map(this::mapToEventoResponse);
     }
 }

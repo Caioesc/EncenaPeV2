@@ -26,12 +26,14 @@ com\encenape\dto\UserResponse.class
 com\encenape\dto\MensagemResponse.class
 com\encenape\exception\GlobalExceptionHandler.class
 com\encenape\controller\IngressoController.class
+com\encenape\dto\UpdateEventoRequest.class
 com\encenape\controller\EventoController.class
 com\encenape\dto\LoginResponse.class
 com\encenape\repository\MensagemRepository.class
 com\encenape\service\IngressoService.class
 com\encenape\repository\FAQRepository.class
 com\encenape\model\Usuario.class
+com\encenape\dto\CreateEventoRequest.class
 com\encenape\model\Ingresso$StatusIngresso.class
 com\encenape\dto\MensagemRequest.class
 com\encenape\dto\EventoResponse$EspacoResponse.class

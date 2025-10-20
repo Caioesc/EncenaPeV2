@@ -29,8 +29,10 @@ public class IngressoController {
     
     @PostMapping
     @Operation(summary = "Comprar ingresso", description = "Realiza a compra de ingressos para um evento")
-    public ResponseEntity<IngressoResponse> comprarIngresso(@Valid @RequestBody CompraIngressoRequest request) {
-        IngressoResponse response = ingressoService.comprarIngresso(request);
+    public ResponseEntity<IngressoResponse> comprarIngresso(
+            @AuthenticationPrincipal Usuario usuario,
+            @Valid @RequestBody CompraIngressoRequest request) {
+        IngressoResponse response = ingressoService.comprarIngresso(usuario, request);
         return ResponseEntity.status(201).body(response);
     }
     

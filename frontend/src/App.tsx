@@ -23,6 +23,7 @@ import Profile from './pages/Profile/Profile';
 import Purchases from './pages/Purchases/Purchases';
 import FAQ from './pages/FAQ/FAQ';
 import Checkout from './pages/Checkout/Checkout';
+import Admin from './pages/Admin/Admin';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 
 // Styles
@@ -81,6 +82,14 @@ const App: React.FC = () => {
                   element={
                     <ProtectedRoute>
                       <Checkout />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/admin"
+                  element={
+                    <ProtectedRoute requireAdmin>
+                      <Admin />
                     </ProtectedRoute>
                   }
                 />

@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../../hooks/useAuth';
+import { useAuth, useIsAdmin } from '../../hooks/useAuth';
 import styles from './Header.module.css';
 
 const Header: React.FC = () => {
   const { user, isAuthenticated, logout } = useAuth();
+  const isAdmin = useIsAdmin();
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -138,6 +139,28 @@ const Header: React.FC = () => {
                     Minhas Compras
                   </Link>
                   
+                  {isAdmin && (
+                    <Link
+                      to="/admin"
+                      className={styles.dropdownItem}
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        className={styles.dropdownIcon}
+                      >
+                        <path
+                          d="M8 0L10.5 5.5L16 8L10.5 10.5L8 16L5.5 10.5L0 8L5.5 5.5L8 0Z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                      Painel Admin
+                    </Link>
+                  )}
+                  
                   <div className={styles.dropdownDivider} />
                   
                   <button
@@ -246,6 +269,15 @@ const Header: React.FC = () => {
                 >
                   Minhas Compras
                 </Link>
+                {isAdmin && (
+                  <Link
+                    to="/admin"
+                    className={styles.mobileNavLink}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Painel Admin
+                  </Link>
+                )}
                 <button
                   className={styles.mobileLogoutButton}
                   onClick={handleLogout}

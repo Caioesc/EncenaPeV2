@@ -47,4 +47,5 @@ public class AuthController {
         usuarioService.resetPassword(request);
         return ResponseEntity.ok("Senha redefinida com sucesso");
     }
+    
 }

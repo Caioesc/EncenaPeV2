@@ -25,7 +25,7 @@ const FAQ: React.FC = () => {
   );
 
   // Buscar categorias
-  const { data: categories } = useQuery('faqCategories', FAQService.getCategories);
+  const { data: categories } = useQuery('faqCategories', FAQService.getFAQCategories);
 
   const toggleExpanded = (id: number) => {
     const newExpanded = new Set(expandedItems);
@@ -100,7 +100,7 @@ const FAQ: React.FC = () => {
               className={styles.categorySelect}
             >
               <option value="">Todas as categorias</option>
-              {categories?.map((category) => (
+              {categories?.map((category: any) => (
                 <option key={category} value={category}>
                   {category}
                 </option>

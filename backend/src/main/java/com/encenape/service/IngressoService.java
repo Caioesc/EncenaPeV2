@@ -28,9 +28,7 @@ public class IngressoService {
     private final QRCodeService qrCodeService;
     
     @Transactional
-    public IngressoResponse comprarIngresso(CompraIngressoRequest request) {
-        Usuario usuario = usuarioRepository.findById(request.getUsuarioId())
-                .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+    public IngressoResponse comprarIngresso(Usuario usuario, CompraIngressoRequest request) {
         
         Evento evento = eventoRepository.findById(request.getEventoId())
                 .orElseThrow(() -> new RuntimeException("Evento não encontrado"));

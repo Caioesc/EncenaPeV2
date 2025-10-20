@@ -36,7 +36,7 @@ const Profile: React.FC = () => {
 
   // Mutation para alterar senha
   const changePasswordMutation = useMutation(
-    (data: { senhaAtual: string; novaSenha: string }) => UserService.changePassword(data),
+    (data: { senhaAtual: string; novaSenha: string }) => UserService.changePassword({ currentPassword: data.senhaAtual, newPassword: data.novaSenha }),
     {
       onSuccess: () => {
         // Limpar formulário de senha
@@ -97,12 +97,6 @@ const Profile: React.FC = () => {
     });
   };
 
-  const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('pt-BR', {
-      style: 'currency',
-      currency: 'BRL',
-    }).format(price);
-  };
 
   if (isLoading) {
     return (
@@ -363,11 +357,11 @@ const Profile: React.FC = () => {
                     />
                   </div>
 
-                  {changePasswordMutation.error && (
+                  {changePasswordMutation.error ? (
                     <div className={styles.errorAlert}>
-                      {changePasswordMutation.error?.response?.data?.message || 'Erro ao alterar senha'}
+                      Erro ao alterar senha
                     </div>
-                  )}
+                  ) : null}
 
                   {changePasswordMutation.isSuccess && (
                     <div className={styles.successAlert}>

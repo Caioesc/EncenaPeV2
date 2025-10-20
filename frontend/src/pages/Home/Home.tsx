@@ -1,38 +1,40 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import { EventService } from '../../services/api';
-import EventCarousel, { Event } from '../../components/EventCarousel/EventCarousel';
+import EventCarousel from '../../components/EventCarousel/EventCarousel';
 import styles from './Home.module.css';
 
 const Home: React.FC = () => {
-  const [featuredEvents, setFeaturedEvents] = useState<Event[]>([]);
-  const [upcomingEvents, setUpcomingEvents] = useState<Event[]>([]);
+  const [featuredEvents, setFeaturedEvents] = useState<any[]>([]);
+  const [upcomingEvents, setUpcomingEvents] = useState<any[]>([]);
 
   // Buscar eventos em destaque
-  const { data: featuredData, isLoading: featuredLoading } = useQuery(
+  useQuery(
     'featured-events',
-    () => EventService.getAvailableEvents(),
+    () => EventService.getEvents(),
     {
       onSuccess: (data) => {
         // Pegar os primeiros 6 eventos disponíveis como destaque
-        setFeaturedEvents(data.slice(0, 6));
+        const events = data.content || data;
+        setFeaturedEvents(events.slice(0, 6));
       }
     }
   );
 
   // Buscar próximos eventos
-  const { data: upcomingData, isLoading: upcomingLoading } = useQuery(
+  useQuery(
     'upcoming-events',
-    () => EventService.getUpcomingEvents(),
+    () => EventService.getEvents(),
     {
       onSuccess: (data) => {
-        setUpcomingEvents(data.slice(0, 8));
+        const events = data.content || data;
+        setUpcomingEvents(events.slice(0, 8));
       }
     }
   );
 
-  const handleBuyClick = (event: Event) => {
+  const handleBuyClick = (event: any) => {
     // Redirecionar para página de checkout
     window.location.href = `/checkout/${event.id}`;
   };

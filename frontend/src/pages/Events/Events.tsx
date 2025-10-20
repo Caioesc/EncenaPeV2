@@ -200,7 +200,7 @@ const Events: React.FC = () => {
               </div>
 
               <div className={styles.eventsGrid}>
-                {events.map((event) => (
+                {events.map((event: any) => (
                   <EventCard
                     key={event.id}
                     event={event}
